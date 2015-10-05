@@ -1,0 +1,1 @@
+Visualizing Minimalation of logical functions
