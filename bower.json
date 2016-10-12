@@ -1,0 +1,19 @@
+{
+  "name": "visual-minimal",
+  "homepage": "https://github.com/slavikmanukyan/visual-minimal",
+  "authors": [
+    "Slavik Manukyan <slavikmanukyan@gmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-route": "^1.4.14",
+    "bootstrap": "~3.3.5",
+    "angular": "^1.4.14"
+  }
+}

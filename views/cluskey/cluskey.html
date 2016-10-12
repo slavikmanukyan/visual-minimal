@@ -1,0 +1,34 @@
+<div class="page-header">
+    <h1> Կվայն-Մակ Կլասկու մեթոդ </h1>
+</div>
+<div set-func func="func" n="n"></div>
+<div class="col-md-6">
+    Որոշել ֆունկցիայի մինիմալ ձևը, որն ունի հետևյալ տեսքը <div vis-function func="func" n="n" one="one"> </div>
+    <button ng-disabled="(!(func.length>0)||one)" class="btn btn-success" ng-click="solve(func,n)">Որոշել</button>
+</div>
+
+<div ng-if="minimal.length>0" class="col-md-6">
+    <div class="row">
+        Կատարենք ՓՖ կոնյուկցիաների վերակոդավորում:
+        <div vis-cod func="func" n="n" ff="true" style="color: #550;font-size: 16px;padding-left: 15px; "></div>
+    </div>
+    <div class="row">
+        <div class="col-md-10">  Կատարենք կոնյուկցիաների միավորում ըստ մեկերի թվի՝
+            Սոսնձվող արգումենտները կփնտրենք հարևան խմբերում, կոնյուկիաները, որոնց արգումենտները սոսնձվում են նշենք <sup>*</sup>`
+            <div  vis-groups stars="stars" groups="groups" n="n" kvayns="kvayns"></div>
+            <div>
+                <p>Սոսնսձման հնարավորությւոնների ստուգումը ցույց է տալիս, որ կոնյուկցիաներում սոսնձվող արգումենտներ չկան։</p>
+                <p>Այսպիսով, ՓՖ ԿԴՆՁ համար կստանանք՝ </p>
+                <p vis-cod func="kvayn" n="n" ff="true" style="color: blue;font-size: 16px;padding-left: 25px;"></p>
+            </div>
+        </div>
+    </div>
+    <div>
+        <div class="col-md-10"> Ստացվածի համար կազմենք իմպլիկատային մատրից՝
+            <div class="col-md-10" vis-matrix matrix="matrix" kvayn="kvayn" func="func" minimal="minimal" xx="true"></div>
+        </div>
+    </div>
+    <div class="col-md-10"> Այստեղից որոշենք ֆունկցիայի մինիմալ ձևը՝
+        <div vis-function  func="minimal" n="n"></div>
+    </div>
+</div>

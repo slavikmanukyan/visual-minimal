@@ -1,0 +1,24 @@
+<div class="page-header">
+  <h1> Իմպլիկատային մատրիցների մեթոդ </h1>
+</div>
+<div set-func func="func" n="n"></div>
+<div class="col-md-6">
+  Որոշել ֆունկցիայի մինիմալ ձևը, որն ունի հետևյալ տեսքը <div vis-function func="func" n="n" one="one"></div>
+  <button ng-disabled="(!(func.length>0)||one)" class="btn btn-success" ng-click="solve(func,n)">Որոշել</button>
+</div><br>
+
+<div ng-if="minimal.length>0" class="col-md-6">
+  <div class="row">
+    <div class="col-md-10">  Կիրառելով Կվայնի մեթոդը ստանանք այս ֆունկցիայի ԿԴՆՁ տեսքը՝
+      <div  vis-kvayn groups="groups" n="n" kvayns="kvayns"></div>
+    </div>
+  </div>
+  <div>
+    <div class="col-md-10"> Ստացվածի համար կազմենք իմպլիկատային մատրից՝
+      <div class="col-md-10" vis-matrix matrix="matrix" kvayn="kvayn" func="func" minimal="minimal"></div>
+    </div>
+  </div>
+  <div class="col-md-10"> Այստեղից որոշենք ֆունկցիայի մինիմալ ձևը՝
+    <div vis-function  func="minimal" n="n"></div>
+  </div>
+</div>

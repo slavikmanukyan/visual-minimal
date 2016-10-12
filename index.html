@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html lang="en" ng-app="visual-minimal" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html lang="en" ng-app="visual-minimal" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html lang="en" ng-app="visual-minimal" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="en" ng-app="visual-minimal" class="no-js"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Visual-Minimal</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/apple-touch-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/apple-touch-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/apple-touch-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/apple-touch-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/apple-touch-icon-120x120.png">
+  <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32"
+  <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96">
+  <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="app.css">
+  <script src="bower_components/jquery/dist/jquery.min.js"></script>
+  <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script type="text/ng-template"  id="views/home/home.html">
+      <div class="container">
+          <div>
+              <div class="page-header">
+                  <h1> Բարի գալուստ visual-minimal! </h1>
+              </div>
+              Այստեղ
+              կարողես մինիմալացնել տրամաբանական ֆունկցիաներ օգտվելով
+          </div>
+          <br>
+          <div class="list-group">
+              <a href="#/indeterminate" class="list-group-item">Անորոշ գործակիցների մեթոդ</a>
+              <a href="#/matrix" class="list-group-item">Իմպլիկատային մատրիցների մեթոդ</a>
+              <a href="#/cluskey" class="list-group-item">Կվայն-Մակ Կլասկու մեթոդ</a>
+          </div>
+          <div>
+              Հեղինակային իրավունքները՝ &copy; <a href="https://facebook.com/slavik.manukyan">Սլավիկ Մանուկյան</a>
+          </div>
+
+      </div>
+</script>
+    <script type="text/ng-template>" id="views/cluskey/cluskey.html">
+        <div class="page-header">
+            <h1> Կվայն-Մակ Կլասկու մեթոդ </h1>
+        </div>
+        <div set-func func="func" n="n"></div>
+        <div class="col-md-6">
+            Որոշել ֆունկցիայի մինիմալ ձևը, որն ունի հետևյալ տեսքը <div vis-function func="func" n="n" one="one"> </div>
+            <button ng-disabled="(!(func.length>0)||one)" class="btn btn-success" ng-click="solve(func,n)">Որոշել</button>
+        </div>
+
+        <div ng-if="minimal.length>0" class="col-md-6">
+            <div class="row">
+                Կատարենք ՓՖ կոնյուկցիաների վերակոդավորում:
+                <div vis-cod func="func" n="n" ff="true" style="color: #550;font-size: 16px;padding-left: 15px; "></div>
+            </div>
+            <div class="row">
+                <div class="col-md-10">  Կատարենք կոնյուկցիաների միավորում ըստ մեկերի թվի՝
+                    Սոսնձվող արգումենտները կփնտրենք հարևան խմբերում, կոնյուկիաները, որոնց արգումենտները սոսնձվում են նշենք <sup>*</sup>`
+                    <div  vis-groups stars="stars" groups="groups" n="n" kvayns="kvayns"></div>
+                    <div>
+                        <p>Սոսնսձման հնարավորությւոնների ստուգումը ցույց է տալիս, որ կոնյուկցիաներում սոսնձվող արգումենտներ չկան։</p>
+                        <p>Այսպիսով, ՓՖ ԿԴՆՁ համար կստանանք՝ </p>
+                        <p vis-cod func="kvayn" n="n" ff="true" style="color: blue;font-size: 16px;padding-left: 25px;"></p>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class="col-md-10"> Ստացվածի համար կազմենք իմպլիկատային մատրից՝
+                    <div class="col-md-10" vis-matrix matrix="matrix" kvayn="kvayn" func="func" minimal="minimal" xx="true"></div>
+                </div>
+            </div>
+            <div class="col-md-10"> Այստեղից որոշենք ֆունկցիայի մինիմալ ձևը՝
+                <div vis-function  func="minimal" n="n" one="one"></div>
+            </div>
+        </div>
+</script>
+    <script type="text/ng-template" id="views/indeterminate/indeterminate.html">
+        <div class="page-header">
+            <h1> Անորոշ գործակիցների մեթոդ </h1>
+        </div>
+        <div set-func func="func" n="n" args="args"></div>
+        <div class="col-md-6">
+            Որոշել ֆունկցիայի մինիմալ ձևը, որն ունի հետևյալ տեսքը՝ <div vis-function func="func" n="n" one="one"></div>
+            <button ng-disabled="!(func.length>0)||one" class="btn btn-success" ng-click="solve(func,n)">Որոշել</button>
+        </div>
+
+        <div ng-if="minimal.length>0" class="col-md-6">
+            <div class="row">
+                <div class="col-md-10">  Կազմենք հավասարումների համակարգը՝
+                    <div ng-if="system.length"  vis-system func="func" args="args" system="system"></div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-10">  Զրոյական տողերի բոլոր գործակիցները հավասարեցնենք զրոի և ջնջենք համակարգից։
+                    Կստանանք՝
+                    <div ng-if="new_system0.length" class="col-md-10" vis-system system="new_system0"></div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-10">  Ամեն մի հավասարման մեջ բոլոր գործակիցները հավասարեցնենք զրոի, բացի մինիմալ փոփոխականներ պարունակող կոնյուկցիաներին պատկանող գործակիցներից։ <br>
+                    Կստանանք հետևյալ համակարգը՝
+                    <div ng-if="new_system.length" class="col-md-10" vis-system system="new_system"></div>
+                </div>
+            </div>
+            <div class="col-md-10"> Այստեղից որոշենք ֆունկցիայի մինիմալ ձևը՝
+                <div vis-function  func="minimal" n="n" one="one"></div>
+            </div>
+        </div>
+</script>
+    <script type="text/ng-template" id="views/matrix/matrix.html">
+        <div class="page-header">
+            <h1> Իմպլիկատային մատրիցների մեթոդ </h1>
+        </div>
+        <div set-func func="func" n="n"></div>
+        <div class="col-md-6">
+            Որոշել ֆունկցիայի մինիմալ ձևը, որն ունի հետևյալ տեսքը <div vis-function func="func" n="n" one="one"></div>
+            <button ng-disabled="(!(func.length>0)||one)" class="btn btn-success" ng-click="solve(func,n)">Որոշել</button>
+        </div><br>
+
+        <div ng-if="minimal.length>0" class="col-md-6">
+            <div class="row">
+                <div class="col-md-10">  Կիրառելով Կվայնի մեթոդը ստանանք այս ֆունկցիայի ԿԴՆՁ տեսքը՝
+                    <div  vis-kvayn groups="groups" n="n" kvayns="kvayns"></div>
+                </div>
+            </div>
+            <div>
+                <div class="col-md-10"> Ստացվածի համար կազմենք իմպլիկատային մատրից՝
+                    <div class="col-md-10" vis-matrix matrix="matrix" kvayn="kvayn" func="func" minimal="minimal"></div>
+                </div>
+            </div>
+            <div class="col-md-10"> Այստեղից որոշենք ֆունկցիայի մինիմալ ձևը՝
+                <div vis-function  func="minimal" n="n" one="one"></div>
+            </div>
+        </div>
+</script>
+</head>
+<body ng-controller="appCtrl">
+
+
+
+  <!--[if lt IE 7]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+  <![endif]-->
+  <nav class="navbar navbar-inverse" >
+      <div class="container-fluid">
+          <div class="navbar-header">
+              <a class="navbar-brand" href="#/home">visual-minimal</a>
+          </div>
+          <div>
+              <ul class="nav navbar-nav">
+
+                  <li ng-class="{active:isActive('/home')}" ><a href="#/home">Home</a></li>
+                  <li ng-class="{active:isActive('/indeterminate')}" ><a href="#/indeterminate">Անորոշ գործակիցների մեթոդ</a></li>
+                  <li ng-class="{active:isActive('/matrix')}"><a href="#/matrix">Իմպլիկատային մատրիցների մեթոդ</a></li>
+                  <li ng-class="{active:isActive('/cluskey')}"><a href="#/cluskey">Կվայն-Մակ Կլասկու մեթոդ</a></li>
+              </ul>
+          </div>
+      </div>
+  </nav>
+  <a href="https://github.com/slavikmanukyan/visual-minimal"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/52760788cde945287fbb584134c4cbc2bc36f904/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f77686974655f6666666666662e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_white_ffffff.png"></a>
+
+  <div ng-view style="height: 100%;"></div>
+
+  <script src="bower_components/angular/angular.min.js"></script>
+  <script src="bower_components/angular-route/angular-route.min.js"></script>
+  <script src="services/services.js"></script>
+  <script src="directives/directives.js"></script>
+  <script src="views/indeterminate/indeterminate.js"></script>
+  <script src="views/matrix/matrix.js"></script>
+  <script src="views/cluskey/cluskey.js"></script>
+  <script src="views/home/home.js"></script>
+  <script src="app.js"></script>
+</div>
+</body>
+</html>

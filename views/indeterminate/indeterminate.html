@@ -1,0 +1,31 @@
+<div class="page-header">
+    <h1> Անորոշ գործակիցների մեթոդ </h1>
+</div>
+<div set-func func="func" n="n" args="args"></div>
+<div class="col-md-6">
+    Որոշել ֆունկցիայի մինիմալ ձևը, որն ունի հետևյալ տեսքը՝ <div vis-function func="func" n="n" one="one"></div>
+    <button ng-disabled="!(func.length>0)||one" class="btn btn-success" ng-click="solve(func,n)">Որոշել</button>
+</div>
+
+<div ng-if="minimal.length>0" class="col-md-6">
+  <div class="row">
+  <div class="col-md-10">  Կազմենք հավասարումների համակարգը՝
+     <div ng-if="system.length"  vis-system func="func" args="args" system="system"></div>
+  </div>
+  </div>
+  <div class="row">
+      <div class="col-md-10">  Զրոյական տողերի բոլոր գործակիցները հավասարեցնենք զրոի և ջնջենք համակարգից։
+                               Կստանանք՝
+          <div ng-if="new_system0.length" class="col-md-10" vis-system system="new_system0"></div>
+      </div>
+  </div>
+  <div class="row">
+      <div class="col-md-10">  Ամեն մի հավասարման մեջ բոլոր գործակիցները հավասարեցնենք զրոի, բացի մինիմալ փոփոխականներ պարունակող կոնյուկցիաներին պատկանող գործակիցներից։ <br>
+                              Կստանանք հետևյալ համակարգը՝
+          <div ng-if="new_system.length" class="col-md-10" vis-system system="new_system"></div>
+      </div>
+  </div>
+    <div class="col-md-10"> Այստեղից որոշենք ֆունկցիայի մինիմալ ձևը՝
+        <div vis-function  func="minimal" n="n"></div>
+    </div>
+</div>
